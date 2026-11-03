@@ -486,3 +486,43 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .tw3-brand{color:var(--muted)}
 .tw3-list a{background:#fff}
 .tw3-list .tn{background:var(--ivory)}
+/* === tower exactly like the MR Realty Tower prototype: deep green & gold === */
+.tw3{background:radial-gradient(80% 55% at 50% 78%,#1d3a2f 0%,#12271f 55%,#0c1d17 100%);border:1px solid #1f3a2f;box-shadow:0 30px 60px -40px rgba(8,24,18,.8)}
+.tw3::before{display:block;background:radial-gradient(55% 30% at 50% 82%,rgba(201,162,74,.16),transparent 70%);-webkit-mask-image:none;mask-image:none}
+.tw3-rot{animation:tw3Sway 14s ease-in-out infinite alternate;transform:translateY(150px) rotateX(-20deg) rotateY(-38deg)}
+@media (width<=900px){.tw3-rot{animation-name:tw3SwayS;transform:translateY(120px) rotateX(-20deg) rotateY(-38deg)}}
+@media (prefers-reduced-motion:reduce){.tw3-rot{animation:none}}
+.tw3-ring{border:1.5px solid rgba(201,162,74,.7);background:radial-gradient(closest-side,rgba(201,162,74,.12),rgba(201,162,74,0) 75%);box-shadow:0 0 30px rgba(201,162,74,.12)}
+.fl3 .fr,.fl3 .bk,.fl3 .lf,.fl3 .rt{background:#16241e;border:0;box-shadow:inset 0 3px 0 #2c4a3d,inset 0 -2px 0 #0a140f}
+.fl3 .lf,.fl3 .bk{filter:brightness(.6);background:#16241e}
+.fl3 .rt{background:#16241e}
+.fl3 .f::before,.fl3:nth-child(even) .fr::before{inset:9px 11px 8px;border:1px solid rgba(201,162,74,.35);background:linear-gradient(180deg,#6d5c26,#4a3e18)}
+.fl3:hover .f::before{background:linear-gradient(180deg,#a68a3d,#6f5b25);border-color:rgba(201,162,74,.6)}
+.fl3.on{transform:translateY(calc(var(--i) * var(--h) * -1)) translateZ(14px) translateX(8px)}
+.fl3.on .fr,.fl3.on .bk,.fl3.on .lf,.fl3.on .rt{background:#16241e;border:0}
+.fl3.on .fr,.fl3.on .rt{filter:none}
+.fl3.on .f::before{background:linear-gradient(180deg,#f7e2a2,#cfa241);border-color:#e6c46a;box-shadow:0 0 18px rgba(240,208,128,.85),inset 0 0 10px rgba(255,255,255,.35)}
+.fl3.roof .fr,.fl3.roof .bk,.fl3.roof .lf,.fl3.roof .rt{background:#1d3029;border:0;box-shadow:inset 0 2px 0 #34584a}
+.fl3.roof .tp{background:linear-gradient(135deg,#21372e,#14251e);border:0}
+.tw3-tag b{color:#d9b25a}
+.tw3-tag span{color:#e8e2d0}
+.tw3-brand{color:#b9b29c}
+.tw3-list{border-top-color:rgba(201,162,74,.25)}
+.tw3-list a{background:transparent;border-color:rgba(201,162,74,.35);color:#efe9d8}
+.tw3-list .tn{background:rgba(201,162,74,.16);color:#d9b25a}
+.tw3-list a:hover{border-color:#d9b25a;background:rgba(201,162,74,.1)}
+.tw3-list a.on{background:linear-gradient(180deg,#e9c46a,#c99a3a);border-color:transparent;color:#12271f;font-weight:600}
+.tw3-list a.on .tn{background:rgba(18,39,31,.15);color:#12271f}
+/* light panel around the prototype tower */
+.tw3{background:radial-gradient(80% 60% at 50% 75%,#fffdf8 0%,#f6efe2 60%,#efe5d2 100%);border:1px solid var(--line);box-shadow:0 30px 60px -44px rgba(11,31,77,.35)}
+.tw3::before{background:radial-gradient(50% 26% at 50% 84%,rgba(176,134,42,.14),transparent 70%)}
+.tw3-ring{border-color:rgba(176,134,42,.75);background:radial-gradient(closest-side,rgba(22,36,30,.14),rgba(22,36,30,0) 75%);box-shadow:none}
+.tw3-tag b{color:var(--gold)}
+.tw3-tag span{color:var(--navy)}
+.tw3-brand{color:var(--muted)}
+.tw3-list{border-top-color:var(--line)}
+.tw3-list a{background:#fff;border-color:#e3d7bf;color:var(--navy)}
+.tw3-list .tn{background:#f3ead8;color:var(--gold)}
+.tw3-list a:hover{border-color:var(--gold-2);background:#fbf2df}
+.tw3-list a.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tw3-list a.on .tn{background:linear-gradient(180deg,#f3d68a,#c99a3a);color:var(--navy)}
