@@ -382,12 +382,12 @@ elevenlabs-convai{z-index:60}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .chat-opts{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px 14px;border-top:1px solid var(--line);background:#fffdf8;max-height:45%;overflow-y:auto}
 .chat-opts:empty{display:none}
-.opt{font:600 13.5px var(--body);color:var(--navy);background:#fff;border:1.5px solid #e0d2b4;border-radius:999px;padding:10px 15px;cursor:pointer;text-align:left;line-height:1.25;transition:background .2s,border-color .2s,transform .2s}
-.opt:hover{background:#fbf2df;border-color:var(--gold)}
-.opt:focus-visible{outline:3px solid var(--gold-2);outline-offset:2px}
-.opt.primary{background:#25d366;border-color:#25d366;color:#fff;text-decoration:none;display:inline-flex}
-.opt.primary:hover{background:#1ebe5b}
-.opt.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.chat-opts .opt{font:600 13.5px var(--body);color:var(--navy);background:#fff;border:1.5px solid #e0d2b4;border-radius:999px;padding:10px 15px;cursor:pointer;text-align:left;line-height:1.25;transition:background .2s,border-color .2s,transform .2s}
+.chat-opts .opt:hover{background:#fbf2df;border-color:var(--gold)}
+.chat-opts .opt:focus-visible{outline:3px solid var(--gold-2);outline-offset:2px}
+.chat-opts .opt.primary{background:#25d366;border-color:#25d366;color:#fff;text-decoration:none;display:inline-flex}
+.chat-opts .opt.primary:hover{background:#1ebe5b}
+.chat-opts .opt.dark{background:var(--navy);border-color:var(--navy);color:#fff}
 .chat-foot{display:flex;gap:4px;justify-content:space-between;padding:8px 12px;border-top:1px solid var(--line);background:var(--ivory)}
 .chat-foot button{border:0;background:none;font:500 12.5px var(--body);color:var(--text);padding:6px 8px;border-radius:8px;cursor:pointer}
 .chat-foot button:hover{color:var(--navy);background:#f1e7d6}
@@ -562,3 +562,5 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .photo-credit{font-size:11px;color:inherit;opacity:.6;margin:14px 0 0;text-align:center;width:100%}
 .photo-credit a{color:inherit}
 .city img{object-position:center 66%}
+
+[hidden]{display:none!important}
