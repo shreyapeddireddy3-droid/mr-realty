@@ -526,3 +526,14 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .tw3-list a:hover{border-color:var(--gold-2);background:#fbf2df}
 .tw3-list a.on{background:var(--navy);border-color:var(--navy);color:#fff}
 .tw3-list a.on .tn{background:linear-gradient(180deg,#f3d68a,#c99a3a);color:var(--navy)}
+/* light tower to match the ivory panel */
+.fl3 .fr,.fl3 .bk,.fl3 .lf,.fl3 .rt{background:#f4ecdc;box-shadow:inset 0 3px 0 #fffaf0,inset 0 -2px 0 #d9c9a6,inset 0 0 0 1px #e1d2b2}
+.fl3 .rt{background:#e9dec6}
+.fl3 .lf,.fl3 .bk{filter:none;background:#e3d6ba}
+.fl3 .f::before,.fl3:nth-child(even) .fr::before{inset:9px 11px 8px;border:1px solid #d8c391;background:linear-gradient(180deg,#efe2bf,#e2cd98)}
+.fl3:hover .f::before{background:linear-gradient(180deg,#f3dfa6,#e2c278)}
+.fl3.on .fr,.fl3.on .bk,.fl3.on .lf,.fl3.on .rt{background:#fbf3e2}
+.fl3.on .f::before{background:linear-gradient(180deg,#f6d98a,#d1a03d);border-color:#c99a3a;box-shadow:0 0 16px rgba(217,170,70,.7),inset 0 0 8px rgba(255,255,255,.45)}
+.fl3.roof .fr,.fl3.roof .bk,.fl3.roof .lf,.fl3.roof .rt{background:#e6dac0;box-shadow:inset 0 2px 0 #fffaf0}
+.fl3.roof .tp{background:linear-gradient(135deg,#fbf6ec,#ece2cc)}
+.tw3-ring{background:radial-gradient(closest-side,rgba(176,134,42,.14),rgba(176,134,42,0) 75%)}
