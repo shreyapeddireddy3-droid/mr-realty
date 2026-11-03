@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://shreyapeddireddy3-droid.github.io/mr-realty/sitemap.xml
