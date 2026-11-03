@@ -343,3 +343,8 @@ elevenlabs-convai{z-index:60}
 .tb-body a.on{transform:none}
 .tw-help .btn{padding:8px 14px}
 }
+
+/* only the chosen floor is shown */
+.floor[hidden]{display:none!important}
+.floors .floor:not([hidden]){opacity:1;border-bottom:0;padding-bottom:0;animation:floorIn .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes floorIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
