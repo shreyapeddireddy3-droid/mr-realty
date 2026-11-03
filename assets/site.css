@@ -449,3 +449,40 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
  .tw3-tag{left:18px;top:270px}.tw3-tag b{font-size:48px}
  .tw3-brand{right:18px;top:18px;font-size:9.5px}
 }
+/* tower panel: light champagne to match the site */
+.tw3{background:radial-gradient(70% 60% at 50% 70%,#fffdf8 0%,#f3eadb 62%,#eadcc4 100%);border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(11,31,77,.35)}
+.tw3::before{background:linear-gradient(rgba(176,134,42,.06) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(176,134,42,.06) 1px,transparent 1px) 0 0/40px 40px;-webkit-mask-image:radial-gradient(60% 55% at 50% 50%,#000,transparent 80%);mask-image:radial-gradient(60% 55% at 50% 50%,#000,transparent 80%)}
+.tw3-ring{border-color:rgba(176,134,42,.7);background:radial-gradient(closest-side,rgba(11,31,77,.16),rgba(11,31,77,0) 75%);box-shadow:none}
+.fl3 .fr,.fl3 .bk,.fl3 .lf,.fl3 .rt{background:#0b1f4d;box-shadow:inset 0 3px 0 #e9e1cc,inset 0 -2px 0 #07122e}
+.fl3 .f::before{border-color:rgba(217,178,90,.45);background:linear-gradient(180deg,#30477e,#1c3166)}
+.fl3:nth-child(even) .fr::before{background:linear-gradient(180deg,#3a5290,#223a72)}
+.fl3:hover .f::before{background:linear-gradient(180deg,#b8954a,#8a6a2a)}
+.fl3.on .f::before{background:linear-gradient(180deg,#fbe6a6,#d4a440);box-shadow:0 0 18px rgba(217,178,90,.9),inset 0 0 10px rgba(255,255,255,.4)}
+.fl3.roof .fr,.fl3.roof .bk,.fl3.roof .lf,.fl3.roof .rt{background:#e9e1cc;box-shadow:inset 0 -2px 0 #d2c6a8}
+.fl3.roof .tp{background:linear-gradient(135deg,#f6f0e2,#ddd2b8)}
+.tw3-tag b{color:var(--gold)}
+.tw3-tag span{color:var(--navy)}
+.tw3-brand{color:#8a7f66}
+.tw3-list{border-top-color:var(--line)}
+.tw3-list a{background:#fffdf8;border-color:#e3d7bf;color:var(--navy)}
+.tw3-list .tn{background:#f3ead8;color:var(--gold)}
+.tw3-list a:hover{border-color:var(--gold-2);background:#fbf2df}
+.tw3-list a.on{background:var(--navy);color:#fff}
+.tw3-list a.on .tn{background:linear-gradient(180deg,#f3d68a,#c99a3a);color:var(--navy)}
+/* plain & neat tower */
+.tw3{background:#fff;border:1px solid var(--line);box-shadow:none}
+.tw3::before{display:none}
+.tw3-rot{animation:none;transform:translateY(150px) rotateX(-18deg) rotateY(-36deg)}
+@media (width<=900px){.tw3-rot{transform:translateY(120px) rotateX(-18deg) rotateY(-36deg)}}
+.tw3-ring{border:1px solid #e3d7bf;background:none;box-shadow:none}
+.fl3 .fr,.fl3 .bk,.fl3 .lf,.fl3 .rt{background:#0b1f4d;box-shadow:inset 0 2px 0 #fff}
+.fl3 .lf,.fl3 .bk{filter:brightness(.8)}
+.fl3 .f::before,.fl3:nth-child(even) .fr::before{inset:10px 12px;border:0;background:#dfe5f0;box-shadow:none}
+.fl3:hover .f::before{background:#f1e2bd}
+.fl3.on .f::before{background:var(--gold-2);box-shadow:none}
+.fl3.on{transform:translateY(calc(var(--i) * var(--h) * -1)) translateZ(10px) translateX(6px)}
+.fl3.roof .fr,.fl3.roof .bk,.fl3.roof .lf,.fl3.roof .rt{background:#0b1f4d;box-shadow:none}
+.fl3.roof .tp{background:#16306b}
+.tw3-brand{color:var(--muted)}
+.tw3-list a{background:#fff}
+.tw3-list .tn{background:var(--ivory)}
