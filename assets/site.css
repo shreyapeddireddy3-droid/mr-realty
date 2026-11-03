@@ -334,4 +334,12 @@ elevenlabs-convai{z-index:60}
 .tw-help img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-2)}
 .tw-help span{flex:1;min-width:0}.tw-help b{display:block;color:var(--navy);font-size:14.5px}.tw-help small{color:var(--text);font-size:12.5px}
 .tw-help .btn{min-height:40px;padding:8px 16px;font-size:13px}
-@media (width<=900px){.tw-col{display:none}}
+@media (width<=900px){
+.tw-col{position:static;margin-bottom:8px}
+.tw-nav{padding:20px 14px 16px;border-radius:26px}
+.tb-body{gap:8px}
+.tb-body a{min-height:60px;grid-template-columns:30px 1fr 16px;padding:8px 12px}
+.tb-body .tt b{font-size:18.5px}.tb-body .tt small{font-size:9px}
+.tb-body a.on{transform:none}
+.tw-help .btn{padding:8px 14px}
+}
