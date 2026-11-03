@@ -95,11 +95,11 @@
     if(i<0||!floors[i]) return;
     floors.forEach(function(f,k){f.hidden=k!==i;});
     setFloor(i);
-    if(scroll){var t=floors[i];var r=t.getBoundingClientRect();if(r.top<70||r.top>window.innerHeight*0.6)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});}
+    if(scroll){var t=floors[i];var r=t.getBoundingClientRect();if(r.top<90||r.top>window.innerHeight*0.5)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});}
   }
   navLinks.forEach(function(a){a.addEventListener('click',function(e){
     var id=a.getAttribute('href').slice(1);e.preventDefault();
-    showFloor(floors.findIndex(function(f){return f.id===id}),window.innerWidth<=900);
+    showFloor(floors.findIndex(function(f){return f.id===id}),true);
     if(history.replaceState)history.replaceState(null,'','#'+id);
   });});
   function fromHash(){var id=location.hash.slice(1);var i=floors.findIndex(function(f){return f.id===id});if(i>=0)showFloor(i,false);}
