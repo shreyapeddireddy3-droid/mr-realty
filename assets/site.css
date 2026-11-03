@@ -561,3 +561,4 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .city img{object-position:center 55%;transform:none}
 .photo-credit{font-size:11px;color:inherit;opacity:.6;margin:14px 0 0;text-align:center;width:100%}
 .photo-credit a{color:inherit}
+.city img{object-position:center 66%}
