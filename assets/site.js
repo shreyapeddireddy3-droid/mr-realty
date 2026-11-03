@@ -278,4 +278,6 @@
       open();
     });});
   })();
+
+  (function(){var d=document.documentElement;function f(){d.classList.toggle('fab-show',window.scrollY>Math.min(560,window.innerHeight*0.7));}f();window.addEventListener('scroll',f,{passive:true});})();
 })();
