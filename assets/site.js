@@ -200,4 +200,75 @@
     if(loaded){$('#voice').close();sendQuestion(q);}
     else{vstat.textContent='Opening the assistant…';whenReady(function(){sendQuestion(q);});}
   });});
+
+  /* guided chat: the visitor only taps answers */
+  (function(){
+    var panel=$('#chat'); if(!panel) return;
+    var log=$('#chat-log'), opts=$('#chat-opts'), openBtn=$('#chat-open');
+    function optsOf(sel){return [].slice.call($(sel).options).map(function(o){return o.text}).filter(Boolean);}
+    var areas=optsOf('#find-area').map(function(t){return t==='Help me choose an area'?'Not sure yet, help me choose':t});
+    var Q=[
+      {k:'type',label:'Looking for',ask:'Hi! I’m the MR Realty assistant. What kind of property are you looking for?',opts:optsOf('#find-type')},
+      {k:'area',label:'Area',ask:'Great choice. Which part of Hyderabad do you prefer?',opts:areas},
+      {k:'budget',label:'Budget',ask:'What budget range are you comfortable with?',opts:optsOf('#find-budget')},
+      {k:'goal',label:'Purpose',ask:'Is this for buying, renting or still researching?',opts:optsOf('#f-goal')},
+      {k:'time',label:'Timeline',ask:'When are you planning to move ahead?',opts:optsOf('#f-time')},
+      {k:'visit',label:'Site visit',ask:'Would you like Mahesh to arrange a site visit?',opts:['Yes, arrange a site visit','Not yet, share options first','Just a call for now']}
+    ];
+    var A={}, step=0, started=false;
+    function scroll(){log.scrollTop=log.scrollHeight;}
+    function bubble(cls,html){var d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;log.appendChild(d);scroll();return d;}
+    function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]});}
+    function setOpts(list){opts.innerHTML='';list.forEach(function(o){opts.appendChild(o)});var f=opts.querySelector('button,a');if(f&&panel.contains(document.activeElement))f.focus({preventScroll:true});}
+    function btn(text,cls,fn){var b=document.createElement('button');b.type='button';b.className='opt'+(cls?' '+cls:'');b.textContent=text;b.addEventListener('click',fn);return b;}
+    function ask(){
+      $('#chat-back').disabled=step===0;
+      if(step>=Q.length){return finish();}
+      var q=Q[step]; opts.innerHTML='';
+      var t=bubble('bot typing','•••');
+      setTimeout(function(){t.classList.remove('typing');t.textContent=q.ask;scroll();
+        setOpts(q.opts.map(function(o){return btn(o,'',function(){A[q.k]=o;bubble('me',esc(o));step++;ask();})}));
+      },reduce?0:450);
+    }
+    function message(){
+      var l=['Hi Mahesh, I found you on the MR Realty website.'];
+      Q.forEach(function(q){if(A[q.k])l.push(q.label+': '+A[q.k]);});
+      return l.join('\n');
+    }
+    function finish(){
+      $('#chat-back').disabled=false;
+      var rows=Q.map(function(q){return '<dt>'+q.label+'</dt><dd>'+esc(A[q.k]||'—')+'</dd>'}).join('');
+      var t=bubble('bot typing','•••');
+      setTimeout(function(){
+        t.classList.remove('typing');t.textContent='Thank you! Here’s your brief. Send it to Mahesh on WhatsApp and he’ll reply with matching options.';
+        bubble('sum','<b>Your property brief</b><dl>'+rows+'</dl>');
+        /* also prefill the enquiry form */
+        setSelect('#f-type',A.type);setSelect('#f-budget',A.budget);setSelect('#f-goal',A.goal);setSelect('#f-time',A.time);
+        if(A.area&&A.area.indexOf('Not sure')!==0)$('#f-loc').value=A.area;
+        var wa=document.createElement('a');wa.className='opt primary';wa.target='_blank';wa.rel='noopener';
+        wa.href='https://wa.me/'+WA+'?text='+encodeURIComponent(message());wa.textContent='Send to Mahesh on WhatsApp ↗';
+        setOpts([wa,
+          btn('Call Mahesh','dark',function(){location.href='tel:+918008464169'}),
+          btn('Change my answers','',restart)]);
+      },reduce?0:450);
+    }
+    function restart(){A={};step=0;log.innerHTML='';ask();}
+    function back(){
+      if(step===0)return;
+      step=Math.min(step,Q.length)-1; delete A[Q[step].k];
+      /* rebuild the log from answers so far */
+      log.innerHTML='';
+      for(var i=0;i<step;i++){bubble('bot',esc(Q[i].ask));bubble('me',esc(A[Q[i].k]));}
+      ask();
+    }
+    function open(){panel.hidden=false;document.documentElement.classList.add('chat-open');openBtn.setAttribute('aria-expanded','true');if(!started){started=true;ask();}setTimeout(function(){var f=opts.querySelector('button,a')||$('#chat-close');f.focus({preventScroll:true});},500);}
+    function close(){panel.hidden=true;document.documentElement.classList.remove('chat-open');openBtn.setAttribute('aria-expanded','false');openBtn.focus({preventScroll:true});}
+    openBtn.addEventListener('click',open);
+    $('#chat-close').addEventListener('click',close);
+    $('#chat-restart').addEventListener('click',restart);
+    $('#chat-back').addEventListener('click',back);
+    panel.querySelector('[data-voice]').addEventListener('click',close);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)close();});
+    $$('[data-chat]').forEach(function(b){b.addEventListener('click',open)});
+  })();
 })();
