@@ -206,7 +206,7 @@
     var panel=$('#chat'); if(!panel) return;
     var log=$('#chat-log'), opts=$('#chat-opts'), openBtn=$('#chat-open');
     function optsOf(sel){return [].slice.call($(sel).options).map(function(o){return o.text}).filter(Boolean);}
-    var areas=optsOf('#find-area').map(function(t){return t==='Help me choose an area'?'Not sure yet, help me choose':t});
+    var areas=optsOf('#find-area').filter(function(t){return t!=='Help me choose an area'}).concat(['Not sure yet, help me choose']);
     var Q=[
       {k:'type',label:'Looking for',ask:'Hi! I’m the MR Realty assistant. What kind of property are you looking for?',opts:optsOf('#find-type')},
       {k:'area',label:'Area',ask:'Great choice. Which part of Hyderabad do you prefer?',opts:areas},
@@ -269,6 +269,13 @@
     $('#chat-back').addEventListener('click',back);
     panel.querySelector('[data-voice]').addEventListener('click',close);
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)close();});
-    $$('[data-chat]').forEach(function(b){b.addEventListener('click',open)});
+    $$('[data-chat]').forEach(function(b){b.addEventListener('click',function(){
+      var t=b.getAttribute('data-chat');
+      if(t){ /* start the chat with the property type already chosen */
+        A={type:t};step=1;log.innerHTML='';started=true;
+        bubble('bot',esc(Q[0].ask));bubble('me',esc(t));ask();
+      }
+      open();
+    });});
   })();
 })();
