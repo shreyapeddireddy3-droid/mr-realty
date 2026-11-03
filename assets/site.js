@@ -156,3 +156,16 @@
     document.head.appendChild(s);
   });
 })();
+/* property types: tabs */
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.type-tab')); if(!tabs.length) return;
+  function show(i,focus){
+    tabs.forEach(function(t,k){var on=k===i;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;var p=document.getElementById(t.getAttribute('aria-controls'));if(p)p.classList.toggle('on',on);});
+    if(focus)tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(i)});
+    t.addEventListener('mouseenter',function(){if(window.matchMedia('(hover:hover)').matches)show(i)});
+    t.addEventListener('keydown',function(e){var n=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n!==null){e.preventDefault();show(n,true);}});
+  });
+})();
