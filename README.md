@@ -7,11 +7,11 @@ Static website for MR Realty, Mahesh's real estate consultancy in Hyderabad.
 - `images/` – photography and brand files (`images/brand/`)
 
 ## Hosting
-GitHub Pages: Settings → Pages → Deploy from a branch → `main` / `(root)`.
+GitHub Pages (repository `leanovaopexsolutions/mr-realty-website`): Settings → Pages → Deploy from a branch → `main` / `(root)`.
 
 ## Custom domain
 1. Add a `CNAME` file containing the domain (e.g. `mrrealty.in`).
-2. DNS: A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; CNAME `www` → `hkaiverse-ai.github.io`.
+2. DNS: A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; CNAME `www` → `leanovaopexsolutions.github.io`.
 3. Settings → Pages → Enforce HTTPS.
 4. Add the domain to the ElevenLabs agent's allowed websites so the voice assistant works.
 
