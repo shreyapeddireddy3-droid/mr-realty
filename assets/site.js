@@ -145,11 +145,13 @@
   var SRC='https://unpkg.com/@elevenlabs/convai-widget-embed@0.22.2/dist/index.js';
   var vstat=$('#voice-status'), vgo=$('#voice-go'), loaded=false, loading=false;
   $$('[data-voice]').forEach(function(b){b.addEventListener('click',function(){
-    if(loaded){var w=$('elevenlabs-convai');if(w)w.scrollIntoView({block:'nearest'});return;}
     openDlg('voice');
   });});
+  var readyCbs=[];
+  function whenReady(cb){if(loaded)cb();else{readyCbs.push(cb);if(!loading)vgo.click();}}
   vgo.addEventListener('click',function(){
-    if(loading||loaded) return; loading=true; vgo.disabled=true; vstat.textContent='Loading the assistant…';
+    if(loaded){$('#voice').close();return;}
+    if(loading) return; loading=true; vgo.disabled=true; vstat.textContent='Loading the assistant…';
     var s=document.createElement('script'); s.src=SRC; s.async=true;
     var timer=setTimeout(fail,15000);
     s.onload=function(){
@@ -160,11 +162,42 @@
         w.setAttribute('action-text','Ask MR Realty’s AI assistant'); w.setAttribute('start-call-text','Start voice conversation');
         $('#voice-host').appendChild(w); loaded=true; loading=false;
         document.documentElement.classList.add('voice-live');
+        vgo.innerHTML='Go to the assistant';
         $('#voice').close();
+        var q=readyCbs.splice(0);q.forEach(function(f){f()});
       });
     };
     s.onerror=fail;
     function fail(){clearTimeout(timer);loading=false;vgo.disabled=false;s.remove();vstat.textContent='The assistant could not load. Try again, or call Mahesh on +91 80084 64169.';}
     document.head.appendChild(s);
   });
+
+  /* quick questions: open the assistant in text mode and send the chosen question */
+  function sendQuestion(text){
+    var tries=0;
+    (function step(){
+      var w=$('elevenlabs-convai'), r=w&&w.shadowRoot; tries++;
+      if(!r){if(tries<200)setTimeout(step,300);return;}
+      var btns=[].slice.call(r.querySelectorAll('button'));
+      function lab(b){return (b.getAttribute('aria-label')||b.textContent||'').trim();}
+      var ta=r.querySelector('textarea');
+      if(!ta){
+        var m=btns.filter(function(b){return lab(b)==='Message';})[0];
+        if(m&&!m.dataset.mrClicked){m.dataset.mrClicked='1';m.click();}
+        if(tries<200)setTimeout(step,300); /* waits while the visitor accepts the notice */
+        return;
+      }
+      var setter=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(ta),'value').set;
+      setter.call(ta,text); ta.dispatchEvent(new Event('input',{bubbles:true}));
+      setTimeout(function(){
+        var send=[].slice.call(r.querySelectorAll('button')).filter(function(b){return lab(b)==='Send';})[0];
+        if(send)send.click(); else ta.focus();
+      },250);
+    })();
+  }
+  $$('.qchip').forEach(function(c){c.addEventListener('click',function(){
+    var q=c.getAttribute('data-q');
+    if(loaded){$('#voice').close();sendQuestion(q);}
+    else{vstat.textContent='Opening the assistant…';whenReady(function(){sendQuestion(q);});}
+  });});
 })();
