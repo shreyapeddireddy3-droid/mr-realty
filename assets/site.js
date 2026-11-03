@@ -88,7 +88,7 @@
     host.appendChild(svg);
   })();
   var navLinks=$$('.tw-nav a');
-  function setFloor(i){floors.forEach(function(f,k){f.classList.toggle('on',k===i)});groups.forEach(function(g,k){g.classList.toggle('on',k===i)});var fid=floors[i]?'#'+floors[i].id:'';navLinks.forEach(function(a){var on=a.getAttribute('href')===fid;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  function setFloor(i){floors.forEach(function(f,k){f.classList.toggle('on',k===i)});groups.forEach(function(g,k){g.classList.toggle('on',k===i)});var fid=floors[i]?'#'+floors[i].id:'';var lv=document.getElementById('tw3Lvl'),nm=document.getElementById('tw3Name');navLinks.forEach(function(a){if(a.getAttribute('href')===fid&&a.dataset.lvl){if(lv)lv.textContent=a.dataset.lvl;if(nm)nm.textContent=a.dataset.name;}});navLinks.forEach(function(a){var on=a.getAttribute('href')===fid;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
   setFloor(0);
   /* tower floors: show only the chosen property type */
   function showFloor(i,scroll){

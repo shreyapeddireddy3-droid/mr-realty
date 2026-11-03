@@ -401,3 +401,51 @@ elevenlabs-convai{z-index:60}
 .fab{transition:opacity .35s,transform .35s}
 html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:none}
 @media (width<=600px){.fab .btn{min-height:44px;padding:9px 16px;font-size:14px}}
+
+/* 3D tower from the MR Realty Tower prototype (navy & gold) */
+.tw3{position:relative;border-radius:32px;overflow:hidden;padding:0 0 18px;background:radial-gradient(70% 55% at 50% 72%,#1f3b78 0%,#10275c 45%,#0a1a40 100%);border:1px solid #1d3570;box-shadow:0 40px 70px -40px rgba(11,31,77,.7);display:block}
+.tw3::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 100%,rgba(217,178,90,.18),transparent 70%);pointer-events:none}
+.tw3-stage{position:relative;height:430px;perspective:1100px;display:grid;place-items:center}
+.tw3-rot{--w:124px;--d:124px;--h:46px;position:relative;width:var(--w);height:var(--d);transform-style:preserve-3d;transform:translateY(150px) rotateX(-20deg) rotateY(-38deg);animation:tw3Sway 14s ease-in-out infinite alternate}
+@keyframes tw3Sway{from{transform:translateY(150px) rotateX(-20deg) rotateY(-52deg)}to{transform:translateY(150px) rotateX(-20deg) rotateY(-24deg)}}
+@media (prefers-reduced-motion:reduce){.tw3-rot{animation:none}}
+.tw3-ring{position:absolute;left:50%;top:50%;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;border:1.5px solid rgba(217,178,90,.75);transform:rotateX(90deg);background:radial-gradient(closest-side,rgba(217,178,90,.14),rgba(217,178,90,0) 75%);box-shadow:0 0 30px rgba(217,178,90,.18)}
+.fl3{position:absolute;inset:0;display:block;transform-style:preserve-3d;transform:translateY(calc(var(--i) * var(--h) * -1));transition:transform .6s cubic-bezier(.2,.7,.2,1);cursor:pointer;text-decoration:none}
+.fl3 .f{position:absolute;display:block;backface-visibility:hidden}
+.fl3 .fr,.fl3 .bk{width:var(--w);height:var(--h);left:0;top:calc(50% - var(--h))}
+.fl3 .lf,.fl3 .rt{width:var(--d);height:var(--h);left:calc(50% - var(--d)/2);top:calc(50% - var(--h))}
+.fl3 .fr{transform:translateZ(calc(var(--d)/2))}
+.fl3 .bk{transform:rotateY(180deg) translateZ(calc(var(--d)/2))}
+.fl3 .lf{transform:rotateY(-90deg) translateZ(calc(var(--w)/2))}
+.fl3 .rt{transform:rotateY(90deg) translateZ(calc(var(--w)/2))}
+/* facade: dark frame, slab line, one wide window band */
+.fl3 .fr,.fl3 .bk,.fl3 .lf,.fl3 .rt{background:#0d1d44;box-shadow:inset 0 3px 0 #2a4685,inset 0 -2px 0 #07122e;transition:filter .4s}
+.fl3 .f::before{content:"";position:absolute;inset:9px 11px 8px;border:1px solid rgba(217,178,90,.35);background:linear-gradient(180deg,#5e4a1c,#3b2f12);transition:background .45s,box-shadow .45s}
+.fl3 .lf,.fl3 .bk{filter:brightness(.62)}
+.fl3:nth-child(even) .fr::before{background:linear-gradient(180deg,#8a6c28,#5a4518)}
+.fl3:hover .f::before{background:linear-gradient(180deg,#a8853a,#6f5520)}
+.fl3.on{transform:translateY(calc(var(--i) * var(--h) * -1)) translateZ(14px) translateX(8px)}
+.fl3.on .f::before{background:linear-gradient(180deg,#fbe6a6,#d4a440);box-shadow:0 0 18px rgba(246,214,138,.85),inset 0 0 10px rgba(255,255,255,.4)}
+.fl3.on .fr,.fl3.on .rt{filter:none}
+.fl3.roof{cursor:default}
+.fl3.roof .fr,.fl3.roof .bk,.fl3.roof .lf,.fl3.roof .rt{height:12px;top:calc(50% - 12px);background:#1a2f63;box-shadow:inset 0 2px 0 #3a5698}
+.fl3.roof .f::before{display:none}
+.fl3.roof .tp{width:var(--w);height:var(--d);left:0;top:calc(50% - var(--d)/2);background:linear-gradient(135deg,#22397a,#13285a);transform:translateY(-12px) rotateX(90deg)}
+.tw3-tag{position:absolute;left:24px;top:350px;display:grid;gap:4px;color:#fff;pointer-events:none}
+.tw3-tag b{font-family:var(--display);font-weight:300;font-size:64px;line-height:.9;color:var(--gold-2)}
+.tw3-tag span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e9e1cc}
+.tw3-brand{position:absolute;right:24px;top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#c9bfa6;pointer-events:none}
+.tw3-list{position:relative;list-style:none;margin:8px 18px 0;padding:14px 0 0;border-top:1px solid rgba(217,178,90,.25);display:flex;flex-wrap:wrap;gap:8px}
+.tw3-list a{display:inline-flex;align-items:center;gap:8px;padding:7px 13px 7px 7px;border-radius:999px;border:1px solid rgba(217,178,90,.35);color:#f3ecda;font-size:13px;text-decoration:none;transition:background .3s,border-color .3s,color .3s}
+.tw3-list .tn{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(217,178,90,.18);font-family:var(--mono);font-size:10.5px;color:var(--gold-2)}
+.tw3-list a:hover{border-color:var(--gold-2);background:rgba(217,178,90,.12)}
+.tw3-list a.on{background:linear-gradient(180deg,#f3d68a,#c99a3a);border-color:transparent;color:var(--navy);font-weight:600}
+.tw3-list a.on .tn{background:rgba(11,31,77,.15);color:var(--navy)}
+@media (width<=900px){
+ .tw3-stage{height:340px}
+ .tw3-rot{--w:96px;--d:96px;--h:36px;transform:translateY(120px) rotateX(-20deg) rotateY(-38deg);animation-name:tw3SwayS}
+ @keyframes tw3SwayS{from{transform:translateY(120px) rotateX(-20deg) rotateY(-52deg)}to{transform:translateY(120px) rotateX(-20deg) rotateY(-24deg)}}
+ .tw3-ring{width:200px;height:200px;margin:-100px 0 0 -100px}
+ .tw3-tag{left:18px;top:270px}.tw3-tag b{font-size:48px}
+ .tw3-brand{right:18px;top:18px;font-size:9.5px}
+}
