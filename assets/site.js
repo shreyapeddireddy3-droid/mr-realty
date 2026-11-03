@@ -103,7 +103,7 @@
     if(history.replaceState)history.replaceState(null,'','#'+id);
   });});
   function fromHash(){var id=location.hash.slice(1);var i=floors.findIndex(function(f){return f.id===id});if(i>=0)showFloor(i,false);}
-  showFloor(0,false); fromHash(); window.addEventListener('hashchange',fromHash);
+  if(navLinks.length){showFloor(0,false); fromHash(); window.addEventListener('hashchange',fromHash);}
 
 
   /* walkthrough */
