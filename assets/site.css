@@ -557,3 +557,7 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 @media (width>900px){.tw3-tag{top:500px}}
 .city img{object-position:center 40%;transform:scale(1.05);transform-origin:50% 40%}
 .city img{object-position:center 62%;transform:none}
+.city{height:clamp(260px,34vw,480px)}
+.city img{object-position:center 55%;transform:none}
+.photo-credit{font-size:11px;color:inherit;opacity:.6;margin:14px 0 0;text-align:center;width:100%}
+.photo-credit a{color:inherit}
