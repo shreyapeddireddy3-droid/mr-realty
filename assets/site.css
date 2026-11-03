@@ -555,3 +555,4 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 }
 @media (prefers-reduced-motion:reduce){.tw3-rot{animation:none}}
 @media (width>900px){.tw3-tag{top:500px}}
+.city img{object-position:center 40%;transform:scale(1.05);transform-origin:50% 40%}
