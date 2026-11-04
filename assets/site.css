@@ -574,3 +574,10 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 @media (width<=900px){.tw3-rot{animation:tw3SpinM 22s linear infinite}}
 @media (prefers-reduced-motion:reduce){.tw3-rot{animation:none}}
 .fl3 .tp{display:none}.fl3.roof .tp{display:block}
+/* voice buttons beside "Chat with us" */
+.btn-voice svg,.fab-voice svg{flex:none}
+.fab-voice{background:#fff;color:var(--navy);border-color:#d8ccb4}
+.made-by{width:100%;text-align:center;margin:18px 0 0;font-size:13px;color:inherit;opacity:.85}
+.made-by a{color:var(--gold-2);font-weight:600;text-decoration:none}
+.made-by a:hover{text-decoration:underline}
+@media (width<=600px){.fab{gap:6px}.fab .btn{padding:9px 14px}}
