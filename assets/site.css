@@ -564,3 +564,13 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .city img{object-position:center 66%}
 
 [hidden]{display:none!important}
+/* Mahesh card opens the hero */
+.hero-copy>.hero-person:first-child{margin:0 0 26px}
+/* tower turns a full circle in 3D; pauses while you point at it */
+@keyframes tw3Spin{from{transform:translateY(205px) rotateX(-18deg) rotateY(0deg)}to{transform:translateY(205px) rotateX(-18deg) rotateY(-360deg)}}
+@keyframes tw3SpinM{from{transform:translateY(160px) rotateX(-18deg) rotateY(0deg)}to{transform:translateY(160px) rotateX(-18deg) rotateY(-360deg)}}
+.tw3-rot{animation:tw3Spin 22s linear infinite}
+.tw3-stage:hover .tw3-rot,.tw3-stage:focus-within .tw3-rot{animation-play-state:paused}
+@media (width<=900px){.tw3-rot{animation:tw3SpinM 22s linear infinite}}
+@media (prefers-reduced-motion:reduce){.tw3-rot{animation:none}}
+.fl3 .tp{display:none}.fl3.roof .tp{display:block}
