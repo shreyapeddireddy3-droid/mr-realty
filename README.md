@@ -26,5 +26,5 @@ Live: https://shreyapeddireddy3-droid.github.io/mr-realty/
 - After changing `assets/site.css` or `assets/site.js`, bump the `?v=` value on their links in `index.html` so returning visitors get the new files.
 
 ## Photo credits
-- Durgam Cheruvu / HITEC City banner: Kavali Chandrakanth KCK, CC BY-SA 4.0, via Wikimedia Commons (credited in the footer; keep that credit while the photo is used).
+- Durgam Cheruvu / HITEC City banner: Unsplash (free licence, no credit required, loaded from images.unsplash.com).
 - "Good questions" interior: Unsplash (free licence, loaded from images.unsplash.com).

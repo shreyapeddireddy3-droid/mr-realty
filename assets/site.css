@@ -581,3 +581,4 @@ html:not(.fab-show) .fab{opacity:0;transform:translateY(16px);pointer-events:non
 .made-by a{color:var(--gold-2);font-weight:600;text-decoration:none}
 .made-by a:hover{text-decoration:underline}
 @media (width<=600px){.fab{gap:6px}.fab .btn{padding:9px 14px}}
+.city img{object-position:center 45%}
