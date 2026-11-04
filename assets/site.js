@@ -140,7 +140,7 @@
   $$('dialog [data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('dialog').close()})});
   $$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d)d.close();});});
 
-  /* voice assistant (ElevenLabs) — loads only when the visitor asks */
+  /* voice assistant: loads only when the visitor asks */
   var AGENT='agent_4001m5wvnnn8eha9jrx6s32vhtdp';
   var SRC='https://unpkg.com/@elevenlabs/convai-widget-embed@0.22.2/dist/index.js';
   var vstat=$('#voice-status'), vgo=$('#voice-go'), loaded=false, loading=false;
